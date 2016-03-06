@@ -1,0 +1,89 @@
+{
+  "id": "UUID",
+  "name": "Mia",
+  "type": "character",
+  "access" : {
+    "owner": "maup",
+    "edit" : ["maup", "psycow"]
+  },
+
+
+  "state" : [
+    {"type": "info", "name": "race", "value": "Dryad"},
+
+    //attributes
+    // Mon idée est d'avoir le pour chaque attribut la valeur de base ainsi que la
+    // valeur courante modifiée par les effets. Pour garder le côte historique et
+    // ne pas recalcumler tout. Probablement juste une partie de l'entité complete?
+    //
+    // Est ce que la race est un modificateur? -- utile pour la generation aléatoire
+    {"type": "attribute", "name": "body",       "base": 2, "value": 2},
+    {"type": "attribute", "name": "agility",    "base": 6, "value": 6},
+    {"type": "attribute", "name": "reaction",   "base": 2, "value": 4,  "modificator": [{"category":"power", "name":"Improved Reflex 2", "value": 2}]},
+    {"type": "attribute", "name": "strength",   "base": 2, "value": 2},
+    {"type": "attribute", "name": "charisma",   "base": 9, "value": 9},
+    {"type": "attribute", "name": "intuition",  "base": 4, "value": 4},
+    {"type": "attribute", "name": "logic",      "base": 2, "value": 2},
+    {"type": "attribute", "name": "willpower",  "base": 4, "value": 4},
+    {"type": "attribute", "name": "edge",       "base": 1, "value": 1},
+    {"type": "attribute", "name": "magic",      "base": 6, "value": 6},
+    {"type": "attribute", "name": "essence",    "base": 6, "value": 6},
+
+    //Initiative : ces valeurs sont créées lors de l'utilisation du module init,
+    //
+    {"type": "value", "name": "initiative-category", "value": "physical"},
+    {"type": "value", "name": "initiative-base", "value": 8},
+    {"type": "value", "name": "initiative-dice", "value": 3,
+     "modificator":[{"category":"power", "name":"Improved Reflex 2", "value": 2}]},
+    {"type": "value", "name": "initiative", "value": 17},
+
+    //limits : ces valeurs sont créées par un module
+    {"type": "value", "name": "physical-limit", "base": 4,  "current": 4},
+    {"type": "value", "name": "mental-limit" ,  "base": 4,  "current": 4},
+    {"type": "value", "name": "social-limit" ,  "base": 8,  "current": 10,
+      "modificator": [{"category":"qualitiy", "name":"Glamour", "value":2}] },
+    {"type": "value", "name": "astral-limit" ,  "base": 10, "current": 10},
+
+    {"type": "qualitiy", "name": "Exceptional Attribute (CHA)", "value": [["charsima-max", 1]]},
+    {"type": "qualitiy", "name": "Glamour", "value": [["social-limit", 2]]},
+    {"type": "qualitiy", "name": "Gremlins (Rating 4)", "value": []},
+    {"type": "qualitiy", "name": "Low-Light Vision", "value": []},
+    {"type": "qualitiy", "name": "Mentor Spirit (Cat)", "value": []}, //modificateur à ajouter
+    {"type": "qualitiy", "name": "Mystic Adept", "value": []},
+    {"type": "qualitiy", "name": "Spirit Whisperer", "value": []},
+    {"type": "qualitiy", "name": "Symbiosis", "value": []},
+    {"type": "qualitiy", "name": "Too Pretty To Hit", "value": []},
+    {"type": "qualitiy", "name": "Wanted (De Rochefort)", "value": []},
+
+    //Spells
+    {"type": "spell",  "name": "Chaos",             "value": -2},
+    {"type": "spell",  "name": "Makeover",          "value": -2},
+    {"type": "spell",  "name": "Trid Phantasm",     "value": 0},
+
+    //Powers
+    {"type": "power",  "name": "Improved Reflexes 2", "value": [["reaction", 2], ["initiative-dice", 2]]},
+    {"type": "power",  "name": "Astral Perception", "value": []},
+
+
+    //Items
+    {"type": "value", "name": "armor", "value": 12}, //bof ça
+    {"type": "value", "name": "armor-name", "value": "Armor Jacket"},
+
+
+    //skill
+    {"type": "skill", "name": "Alchemy",          "value": 6},
+    {"type": "skill", "name": "Animal Handling",  "value": 1},
+    {"type": "skill", "name": "Archery",          "value": 6},
+
+    {"type": "skill-specialization", "name": "Alchemy",     "value": "On command"},
+    {"type": "skill-specialization", "name": "Archery",     "value": "Bow"},
+    {"type": "skill-specialization", "name": "Gymnastics",  "value": "Dance"},
+
+
+    {"type": "weapon", "name":"Bow", "value": {"rating": 4, "accuracy": 6, "damage": 6, "type": "physical", "AP": -1, "RC": 2}}
+
+  ],
+
+
+
+}
