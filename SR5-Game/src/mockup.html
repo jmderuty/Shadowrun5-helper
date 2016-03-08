@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Shadowrun 5 - Helper</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="	sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="css/styles.css" media="all"> -->
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/live.js"></script>
+
+	<style type="text/css">
+		header {
+		    height: 65px;
+		}
+
+		.shade {
+		    background-color:  rgba(0, 0, 0, 0.1);
+		}
+
+		div.players {
+		    width: 40%;
+		}
+
+		div.notifications {
+		    width: 240px;
+		    padding: 0 0.5em 0 0.5em;
+		    overflow: scroll;
+		    height: 550px;
+		    border-left: 1px solid #000;
+		}
+
+		div.opposition {
+		    margin-left: 40%;
+		    margin-right: 240px;
+		    padding-right:0.5em;
+		}
+
+
+		.character {
+		    margin: 1em;
+		    border-radius: 4px;
+		}
+
+		h4.name {
+		    padding: 0.1em 0 0 0.3em;
+		    margin-bottom: 0.3em;
+		}
+		h4.name .badge {
+		    margin-top: -4px;
+		}
+	</style>
+
+</head>
+<body>
+
+	<header id="header" role="banner">
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">SR5</a>
+		    </div>
+
+		    <div>
+		      <ul class="nav navbar-nav">
+				<li class="active"><a href="#">Partie</a></li>
+				<li><a href="#">Édition</a></li>
+				<li><a href="#">Blah</a></li>
+				<li><a href="#">Paramètres</a></li>
+			  </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="">julien.jaeck@gmail.com</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+	</header>
+
+
+
+    <div class="pull-left players">
+
+		<div class="character shade">
+			<div class="btn-group-vertical pull-right" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalinit">Initiative</button>
+			  <button type="button" class="btn btn-default btn-xs">Attaque</button>
+			  <button type="button" class="btn btn-default btn-xs">Compétences</button>
+			  <button type="button" class="btn btn-default btn-xs">Actions</button>
+			</div>
+
+			<h4 class="name"> Mia <span class="badge">18</span></h4>
+
+		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
+		  <div class="progress-bar progress-bar-danger"  role="progressbar"
+		  	aria-valuenow="4" aria-valuemin="0" aria-valuemax="10" style="width: 40%;">
+		  </div>
+		</div>
+
+		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
+		  <div class="progress-bar"  role="progressbar"
+		  	aria-valuenow="2" aria-valuemin="0" aria-valuemax="10" style="width: 20%;">
+		  </div>
+		</div>
+
+			<table style="width: 75%">
+				<tr>
+					<th>BOD</th><th>AGI</th><th>REA</th><th>STR</th>
+					<th>LOG</th><th>INT</th><th>WIL</th><th>CHR</th>
+				</tr>
+				<tr>
+					<td>3</td><td>6</td><td>4</td><td>2</td>
+					<td>3</td><td>4</td><td>4</td><td>10</td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div class="character shade">
+			<div class="btn-group-vertical pull-right" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default btn-xs">Initiative</button>
+			  <button type="button" class="btn btn-default btn-xs">Attaque</button>
+			  <button type="button" class="btn btn-default btn-xs">Compétences</button>
+			  <button type="button" class="btn btn-default btn-xs">Actions</button>
+			</div>
+
+			<h4 class="name"> Bob <span class="badge">14</span></h4>
+
+		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
+		  <div class="progress-bar progress-bar-danger"  role="progressbar"
+		  	aria-valuenow="8" aria-valuemin="0" aria-valuemax="12" style="width: 80%;">
+		  </div>
+		</div>
+
+		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
+		  <div class="progress-bar"  role="progressbar"
+		  	aria-valuenow="3" aria-valuemin="0" aria-valuemax="10" style="width: 30%;">
+		  </div>
+		</div>
+
+			<table style="width: 75%">
+				<tr>
+					<th>BOD</th><th>AGI</th><th>REA</th><th>STR</th>
+					<th>LOG</th><th>INT</th><th>WIL</th><th>CHR</th>
+				</tr>
+				<tr>
+					<td>3</td><td>6</td><td>4</td><td>2</td>
+					<td>3</td><td>4</td><td>4</td><td>10</td>
+				</tr>
+			</table>
+		</div>
+
+    </div>
+
+
+    <div class="pull-right notifications">
+		<dl class="note alert alert-success">
+			<dt>Mia attaque Brute 1 </dt>
+			<dd><span>4</span> succès, esquive <span>raté</span> </dd>
+			<dd>Brute 1 subit <span>5</span> dommages </dd>
+		</dl>
+
+		<dl class="note alert alert-warning">
+			<dt>Mia fait une préparation </dt>
+			<dd>Force 5 — <span>4</span> succès </dd>
+			<dd>Drain <span>raté<span> <span>2</span> dommages étourdissants</dd>
+		</dl>
+
+		<dl class="note alert alert-warning">
+			<dt>Mia fait une préparation </dt>
+			<dd>Force 5 — <span>4</span> succès </dd>
+			<dd>Drain <span>réussi<span> </dd>
+		</dl>
+
+		<dl class="note alert alert-warning">
+			<dt>Mia fait une préparation </dt>
+			<dd>Force 5 — <span>4</span> succès </dd>
+			<dd>Drain <span>raté<span> <span>2</span> dommages étourdissants</dd>
+		</dl>
+
+		<dl class="note alert alert-danger">
+			<dt>Brute 2 attaque Bob </dt>
+			<dd><span>10</span> succès, esquive <span>raté</span> </dd>
+			<dd>Bob subit <span>5</span> dommages physique</dd>
+		</dl>
+
+		<div class="note panel panel-danger">
+			<div class="panel-heading"><h4 class="panel-title">Brute 2 attaque Bob </h4></div>
+			<div class="panel-body"><span>10</span> succès, esquive <span>raté</span>
+			<br/> Bob subit <span>5</span> dommages physique</div>
+		</div>
+    </div>
+
+
+
+    <div class="opposition">
+        <div class="row">
+
+		<div class="character shade">
+			<span class="name"> Bob</span>
+
+			<table>
+				<tr>
+					<th>BOD</th><th>AGI</th><th>REA</th><th>STR</th>
+					<th>LOG</th><th>INT</th><th>WIL</th><th>CHR</th>
+				</tr>
+				<tr>
+					<td>3</td><td>6</td><td>4</td><td>2</td>
+					<td>3</td><td>4</td><td>4</td><td>10</td>
+				</tr>
+			</table>
+		</div>
+
+
+        </div>
+    </div>
+
+
+<div class="modal fade" id="modalinit" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</body>
+</html>
