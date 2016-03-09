@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Shadowrun 5 - Helper</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="	sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="css/styles.css" media="all"> -->
-	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/live.js"></script>
 
+
+    <!-- <link href="css/non-responsive.css" rel="stylesheet"> -->
 	<style type="text/css">
 		header {
-		    height: 65px;
+		   height: 60px;
 		}
 
 		.shade {
@@ -50,6 +51,28 @@
 		h4.name .badge {
 		    margin-top: -4px;
 		}
+
+		.note dd { padding-bottom: 3px; }
+		.roll {
+			border: 2px double #aaa;
+			padding: 0px 4px 0px 4px;
+		}
+		.roll.critical-success {
+			border-color: #3a3;
+		}
+		.roll.critical-fail {
+			border-color: #a33;
+		}
+		.tooltip-inner {
+			/*max-width: 100px;*/
+			white-space: pre;
+		}
+		.tt-fail {color:#f33;}
+		.tt-success {color:#3f3;}
+
+		.popover {
+			width: 400px;
+		}
 	</style>
 
 </head>
@@ -62,7 +85,7 @@
 		      <a class="navbar-brand" href="#">SR5</a>
 		    </div>
 
-		    <div>
+		    <div id="navbar">
 		      <ul class="nav navbar-nav">
 				<li class="active"><a href="#">Partie</a></li>
 				<li><a href="#">Édition</a></li>
@@ -78,18 +101,45 @@
 	</header>
 
 
-
     <div class="pull-left players">
 
 		<div class="character shade">
 			<div class="btn-group-vertical pull-right" role="group" aria-label="...">
-			  <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modalinit">Initiative</button>
-			  <button type="button" class="btn btn-default btn-xs">Attaque</button>
-			  <button type="button" class="btn btn-default btn-xs">Compétences</button>
-			  <button type="button" class="btn btn-default btn-xs">Actions</button>
+
+				<!-- Mieux avec bootstrap-web-components -->
+			    <button type="button" class="btn btn-default btn-xs"
+			  		  data-toggle="popover" data-trigger="click focus"
+			  		  title="Initiative" data-placement="right"
+			  		  data-content="
+			  		  <form class='form-inline'>
+			  		    <div class='form-group'>
+			  		  	  <!-- <label class='control-label'> Initiative </label> -->
+			  		  	  <select class='form-control'>
+						    <option>Physique 8 + 6d6 </option>
+						    <option>Astral   8 + 3d6 </option>
+						    <option>RA       5 + 1d6 </option>
+						  </select>
+						<button type='submit' class='btn btn-primary pull-right'><span class='glyphicon glyphicon-unchecked'></span></button>
+						</div>
+						</form>">
+			  		Initiative
+			  	</button>
+			  	<button type="button" class="btn btn-default btn-xs"
+			  		 	data-toggle="modal" data-target="#modal-attack">
+			  		Attaque
+			  	</button>
+			  	<button type="button" class="btn btn-default btn-xs"
+			  		 	data-toggle="modal" data-target="#modal-skills">
+			  		 	Compétences
+			  	</button>
+			  	<button type="button" class="btn btn-default btn-xs"
+			  		 	data-toggle="modal" data-target="#modal-actions">
+			  			Actions
+			  	</button>
 			</div>
 
-			<h4 class="name"> Mia <span class="badge">18</span></h4>
+			<h4 class="name"> Mia <span class="badge"  data-toggle="tooltip" data-placement="top"
+					  title="Initiative Astrale">18</span> </h4>
 
 		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
 		  <div class="progress-bar progress-bar-danger"  role="progressbar"
@@ -117,14 +167,15 @@
 		</div>
 
 		<div class="character shade">
-			<div class="btn-group-vertical pull-right" role="group" aria-label="...">
+			<div class="btn-group-vertical pull-right" role="group">
 			  <button type="button" class="btn btn-default btn-xs">Initiative</button>
 			  <button type="button" class="btn btn-default btn-xs">Attaque</button>
 			  <button type="button" class="btn btn-default btn-xs">Compétences</button>
 			  <button type="button" class="btn btn-default btn-xs">Actions</button>
 			</div>
 
-			<h4 class="name"> Bob <span class="badge">14</span></h4>
+			<h4 class="name"> Bob <span class="badge" data-toggle="tooltip" data-placement="top"
+					  title="Initiative physique">14</span></h4>
 
 		<div class="progress" style="height: 10px; margin:0px; margin-bottom: 5px;">
 		  <div class="progress-bar progress-bar-danger"  role="progressbar"
@@ -156,38 +207,80 @@
     <div class="pull-right notifications">
 		<dl class="note alert alert-success">
 			<dt>Mia attaque Brute 1 </dt>
-			<dd><span>4</span> succès, esquive <span>raté</span> </dd>
-			<dd>Brute 1 subit <span>5</span> dommages </dd>
+			<dd><span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+				4</span> succès,
+				 esquive
+				 <span class="roll critical-fail" data-toggle="tooltip" data-placement="top"
+					   title="4d6 [8] = {<span class='tt-fail'>1</span>, <span class='tt-fail'>1</span>, <span class='tt-fail'>1</span>, 4}">
+				 raté</span> </dd>
+			<dd>Brute 1 subit
+				<span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+				5</span> dommages </dd>
+		</dl>
+
+
+		<dl class="note alert alert-warning">
+			<dt>Mia fait une préparation </dt>
+			<dd>Force 5 —
+				<span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  4</span> succès </dd>
+			<dd>Drain
+				<span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+				raté</span>
+				<span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+				2</span> dommages étourdissants</dd>
 		</dl>
 
 		<dl class="note alert alert-warning">
 			<dt>Mia fait une préparation </dt>
-			<dd>Force 5 — <span>4</span> succès </dd>
-			<dd>Drain <span>raté<span> <span>2</span> dommages étourdissants</dd>
+			<dd>Force 5 — <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  4</span> succès </dd>
+			<dd>Drain <span class="roll critical-success" data-toggle="tooltip" data-placement="top"
+					  title="2d6 [8] = {<span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  réussi<span> </dd>
 		</dl>
 
 		<dl class="note alert alert-warning">
 			<dt>Mia fait une préparation </dt>
-			<dd>Force 5 — <span>4</span> succès </dd>
-			<dd>Drain <span>réussi<span> </dd>
-		</dl>
-
-		<dl class="note alert alert-warning">
-			<dt>Mia fait une préparation </dt>
-			<dd>Force 5 — <span>4</span> succès </dd>
-			<dd>Drain <span>raté<span> <span>2</span> dommages étourdissants</dd>
+			<dd>Force 5 — <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  4</span> succès </dd>
+			<dd>Drain <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  raté</span>
+					  <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  2</span> dommages étourdissants</dd>
 		</dl>
 
 		<dl class="note alert alert-danger">
 			<dt>Brute 2 attaque Bob </dt>
-			<dd><span>10</span> succès, esquive <span>raté</span> </dd>
-			<dd>Bob subit <span>5</span> dommages physique</dd>
+			<dd><span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  10</span> succès, esquive <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  raté</span> </dd>
+			<dd>Bob subit <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  5</span> dommages physique</dd>
 		</dl>
 
 		<div class="note panel panel-danger">
 			<div class="panel-heading"><h4 class="panel-title">Brute 2 attaque Bob </h4></div>
-			<div class="panel-body"><span>10</span> succès, esquive <span>raté</span>
-			<br/> Bob subit <span>5</span> dommages physique</div>
+			<div class="panel-body"><span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  10</span> succès, esquive <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  raté</span>
+			<br/> Bob subit <span class="roll" data-toggle="tooltip" data-placement="top"
+					  title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+					  5</span> dommages physique</div>
 		</div>
     </div>
 
@@ -216,25 +309,147 @@
     </div>
 
 
-<div class="modal fade" id="modalinit" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal-attack" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Mia attaque !</h4>
       </div>
+
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+
+			<form class="form-horizontal">
+			  <div class="form-group">
+			    <label for="atk-weapon" class="col-sm-2 control-label">Arme</label>
+			    <div class="col-sm-10">
+			       <select class="form-control" id="atk-weapon">
+					  <option>Arc</option>
+					  <option>Main nue</option>
+					</select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="atk-target" class="col-sm-2 control-label">Cible</label>
+			    <div class="col-sm-10">
+			       <select class="form-control" id="atk-target">
+					  <option>Mad Dog</option>
+					  <option>Brute 1</option>
+					  <option>Brute 2</option>
+					  <option>Bob</option>
+					  <option>Evelyne</option>
+					</select>
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="atk-mods" class="col-sm-2 control-label">Modificateurs</label>
+			    <div class="col-sm-10 row">
+					<div class="col-xs-3">
+			        <label> Visibilité
+			          <select class="form-control" id="atk-mod-visu">
+						  <option>1</option>
+						  <option>2</option>
+						  <option>3</option>
+						  <option>4</option>
+						  <option>5</option>
+					</select>
+			        </label>
+  			        </div>
+					<div class="col-xs-3">
+			        <label> Luminosité
+			          <select class="form-control" id="atk-mod-visu">
+						  <option>1</option>
+						  <option>2</option>
+						  <option>3</option>
+						  <option>4</option>
+						  <option>5</option>
+					</select>
+			        </label>
+			        </div>
+					<div class="col-xs-3">
+			        <label> Blah
+			          <select class="form-control" id="atk-mod-visu">
+						  <option>1</option>
+						  <option>2</option>
+						  <option>3</option>
+						  <option>4</option>
+						  <option>5</option>
+					</select>
+			        </label>
+			      </div>
+			    </div>
+			  </div>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal">Lancer</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
+<div class="modal fade" id="modal-skills" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mia utilise une compétence</h4>
+      </div>
+	  <div class="modal-body">
+		<form class="form-horizontal">
+<!-- 		<div class="form-group">
+			    <label for="atk-weapon" class="col-sm-2 control-label">Arme</label>
+			    <div class="col-sm-10">
+			       <select class="form-control" id="atk-weapon">
+					  <option>Arc</option>
+					  <option>Main nue</option>
+					</select>
+			    </div>
+			  </div>
+-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal">Lancer</button>
+      </div>
+      </form>
+	</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+
+<div class="modal fade" id="modal-actions" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mia réalise une action</h4>
+      </div>
+	  <div class="modal-body">
+	  Sorts <br/>
+	  Alchimie <br/>
+	  Objets <br/>
+
+	  Actions spécifiques (Matrice, Drone)
+	  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- <footer class="clearfix shade"> &nbsp;</footer> -->
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/live.js"></script>
+<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip({html: true});
+	  $('[data-toggle="popover"]').popover({html: true, container: 'body'});
+	})
+</script>
 </body>
 </html>
