@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Shadowrun 5 - Helper</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/site.css"/>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+<!--
+    <link rel="stylesheet" href="./css/uikit.gradient.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="./js/uikit.min.js"></script>
+    <script src="./js/core/dropdown.min.js" type="text/javascript"></script>
+    <script src="./js/core/nav.min.js" type="text/javascript"></script>
+    <script src="./js/core/button.min.js" type="text/javascript"></script>
+
+    <script src="./js/components/sortable.js" type="text/javascript"></script>
+    <link   href="./css/components/sortable.css" rel="stylesheet" type="text/css" />
+
+    <script src="./js/components/tooltip.js" type="text/javascript"></script>
+    <link   href="./css/components/tooltip.almost-flat.css" rel="stylesheet" type="text/css" />
+-->
+
+
+</head>
+<body>
+<div id="layout">
+
+    <nav id="nav" class="">
+        <h3> SR5 </h3>
+        <ul class="menu">
+            <li class="menu-item"><a href="#"> <i class="fa fa-cog"></i> Logout</a></li>
+            <li class="menu-item active"><a href="#">Partie</a></li>
+            <li class="menu-item"><a href="#">Edition</a></li>
+            <li class="menu-item"><a href="#">Paramètres</a></li>
+        </ul>
+
+        <ul class="menu">
+            <li class="menu-heading"> MJ </li>
+            <li class="menu-item"><a href="#">Preparation</a></li>
+            <li class="menu-item"><a href="#">Work</a></li>
+            <li class="menu-item"><a href="#">Travel</a></li>
+        </ul>
+    </nav>
+
+    <div id="list" class="">
+
+        <nav id="list-actions" class="navbar">
+
+            <ul class="nav nav-pills">
+                <li class="active"><a href="">PJs</a></li>
+                <li><a href="">PNJs</a></li>
+
+                <li role="presentation">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Tri <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-hourglass-2"></i> Initiative</a></li>
+                            <li><a href="#"><i class="fa fa-heartbeat"></i>   Santé</a></li>
+                            <li><a href="#"><i class="fa fa-flash"></i>       Etourdissement</a></li>
+                            <li><a href="#"><i class="fa fa-shield"></i>      Armure</a></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+
+        <div id="entities">
+
+            <div class="entity"  data-target-id="mia"
+                 data-physical="0" data-stun="4" data-armor="9" data-init="28">
+                <img class="avatar" alt="Mia" height="64" width="64" src="./img/token/mia.jpeg" />
+    			<h4 class="name">Mia</h4>
+                <ul class="status">
+                    <li class="stat btn-danger" title="Santé">
+                        <i class="fa fa-heartbeat"></i> 0</li>
+                    <li class="stat btn-info" title="Etourdissement">
+                        <i class="fa fa-flash"></i> 4</li>
+                    <li class="stat btn-success" title="Armure">
+                        <i class="fa fa-shield"></i> 9</li>
+    			    <li class="stat btn-warning" title="Initiative">
+                        <i class="fa fa-hourglass-2"></i> 28</li>
+                </ul>
+    		</div>
+
+            <div class="entity"    data-target-id="hajna"
+                 data-physical="3" data-stun="0" data-armor="13" data-init="17">
+                <img class="avatar" alt="Hajna" height="64" width="64" src="./img/token/hajna.jpeg" />
+                <h4 class="name">Hajna</h4>
+                <ul class="status">
+                    <li class="stat btn-danger" title="Santé">
+                        <i class="fa fa-heartbeat"></i>  3</li>
+                    <li class="stat btn-info" title="Etourdissement">
+                        <i class="fa fa-flash"></i>  0</li>
+                    <li class="stat btn-success" title="Armure">
+                        <i class="fa fa-shield"></i>  13</li>
+                    <li class="stat btn-warning" title="Initiative">
+                        <i class="fa fa-hourglass-2"></i> 17</li>
+                </ul>
+            </div>
+
+            <div class="entity"   data-target-id="bob"
+                 physical="6" stun="4" armor="11" init="15">
+                <img class="avatar" alt="Bob" height="64" width="64" src="./img/token/bob.png" />
+                <h4 class="name">Bob</h4>
+                <ul class="status">
+                    <li class="stat btn-danger" title="Santé">
+                        <i class="fa fa-heartbeat"></i>  6</li>
+                    <li class="stat btn-info" title="Etourdissement">
+                        <i class="fa fa-flash"></i>  4</li>
+                    <li class="stat btn-success" title="Armure">
+                        <i class="fa fa-shield"></i>  11</li>
+                    <li class="stat btn-warning" title="Initiative">
+                        <i class="fa fa-hourglass-2"></i> 15</li>
+                </ul>
+            </div>
+
+            <div class="entity"   data-target-id="alderic"
+                 physical="0" stun="4" armor="11" init="13">
+                <img class="avatar" alt="Alderic" height="64" width="64" src="./img/token/alderic.jpg" />
+                <h4 class="name">Alderic</h4>
+                <ul class="status">
+                    <li class="stat btn-danger" title="Santé">
+                        <i class="fa fa-heartbeat"></i>  0</li>
+                    <li class="stat btn-info" title="Etourdissement">
+                        <i class="fa fa-flash"></i>  4</li>
+                    <li class="stat btn-success" title="Armure">
+                        <i class="fa fa-shield"></i>  11</li>
+                    <li class="stat btn-warning" title="Initiative">
+                        <i class="fa fa-hourglass-2"></i> 13</li>
+                </ul>
+            </div>
+
+            <div class="entity"    data-target-id="feryel"
+                physical="0" stun="2" armor="9" init="8">
+                <img class="avatar" alt="Feryel" height="64" width="64" src="./img/token/feryel.jpeg" />
+                <h4 class="name">Feryel</h4>
+                <ul class="status">
+                    <li class="stat btn-danger" title="Santé">
+                        <i class="fa fa-heartbeat"></i>  0</li>
+                    <li class="stat btn-info" title="Etourdissement">
+                        <i class="fa fa-flash"></i>  2</li>
+                    <li class="stat btn-success" title="Armure">
+                        <i class="fa fa-shield"></i>  9</li>
+                    <li class="stat btn-warning" title="Initiative">
+                        <i class="fa fa-hourglass-2"></i> 8</li>
+                </ul>
+            </div>
+        </div>
+
+    </div> <!-- #list -->
+	<div id="main" class="">
+
+        <div class="entity-panel hidden" data-entity-id="feryel">
+            <div class="header">
+                <h1 class="name">Feryel</h1>
+            </div>
+        </div>
+
+        <div class="entity-panel hidden" data-entity-id="bob">
+            <div class="header">
+                <h1 class="name">Bob</h1>
+            </div>
+        </div>
+
+        <div class="entity-panel hidden" data-entity-id="hajna">
+            <div class="header">
+                <h1 class="name">Hajna</h1>
+            </div>
+        </div>
+
+        <div class="entity-panel hidden" data-entity-id="alderic">
+            <div class="header">
+                <h1 class="name">Alderic</h1>
+            </div>
+        </div>
+
+        <div class="entity-panel" data-entity-id="mia">
+            <div class="header">
+                <h1 class="name">Mia</h1>
+            </div>
+
+            <div class="body">
+                <table class="attributes">
+                    <tr>
+                        <th title="Constitution">   Con </th>
+                        <th title="Agilité">        Agi </th>
+                        <th title="Réaction">       Réa </th>
+                        <th title="Force">          For </th>
+                        <th title="Logique">        Log </th>
+                        <th title="Intuition">      Int </th>
+                        <th title="Volonté">        Vol </th>
+                        <th title="Charisme">       Cha </th>
+                        <th title="Chance">         Chn </th>
+                        <th title="Magie">          Mag </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td title="Constitution"><button class="attr button"> <!-- Con -->  2 </button></td>
+                        <td title="Agilité">     <button class="attr button"> <!-- Agi -->  6 </button></td>
+                        <td title="Réaction">    <button class="attr button"> <!-- Réa -->  4 </button></td>
+                        <td title="Force">       <button class="attr button"> <!-- For -->  2 </button></td>
+                        <td title="Logique">     <button class="attr button"> <!-- Log -->  2 </button></td>
+                        <td title="Intuition">   <button class="attr button"> <!-- Int -->  4 </button></td>
+                        <td title="Volonté">     <button class="attr button"> <!-- Vol -->  4 </button></td>
+                        <td title="Charisme">    <button class="attr button"> <!-- Cha --> 10 </button></td>
+                        <td title="Chance">      <button class="attr button"> <!-- Chn -->  1 </button></td>
+                        <td title="Magie">       <button class="attr button"> <!-- Mag -->  6 </button></td>
+                    </tr>
+                </table>
+                <button class="btn-roll button button-primary"> Lancer </button>
+            </div>
+
+<p>
+    == Info ==
+    Street Name: Shyntae
+    Name: Unnamed Character
+    Movement: 12/24
+    Karma: 0
+    Street Cred: 0
+    Notoriety: 1
+    Public Awareness: 0
+    Elf (Dryad) Female Age 22
+    Composure: 13
+    Judge Intentions: 13
+    Lift/Carry: 4 (30 kg/20 kg)
+    Memory: 6
+    Nuyen: 4320
+</p>
+
+<p>
+    == Priorities ==
+    Metatype: D(1) - Human or Elf
+    Attributes: B(3) - 20 Attributes
+    Special: A(4) - Magician or Technomancer
+    Skills: C(2) - 28 Skills/2 Skill Groups
+    Resources: E(0) - 6,000•
+</p>
+<p>
+    == Attributes ==
+    BOD: 2
+    AGI: 6
+    REA: 2 (4)
+    STR: 2
+    CHA: 9
+    INT: 4
+    LOG: 2
+    WIL: 4
+    EDG: 1
+    MAG: 6
+</p>
+
+
+<table class="initiative">
+<tr><th colspan="2"> Initiative </th></tr>
+<tr><td> Physique </td>
+    <td><input type="radio" name="init" value="physical" checked /> 8 + 3d6 </td>
+    </tr>
+<tr><td> Rigger </td>
+    <td><input type="radio" name="init" value="rigger" />           8 + 3d6 </td>
+    </tr>
+<tr><td> Astral </td>
+    <td><input type="radio" name="init" value="astral" />           8 + 2d6 </td>
+    </tr>
+<tr><td> Matrix AR </td>
+    <td><input type="radio" name="init" value="matrix-AR" />        8 + 3d6 </td>
+    </tr>
+<tr><td> Matrix Cold </td>
+    <td><input type="radio" name="init" value="matrix-cold" />      4 + 3d6 </td>
+    </tr>
+<tr><td> Matrix Hot </td>
+    <td><input type="radio" name="init" value="matrix-hot" />       4 + 4d6 </td>
+    </tr>
+</table>
+<p>
+    == Derived Attributes ==
+    Essence:                   6
+    Initiative:                6 (8) + 3d6
+    Rigger Initiative:         8 + 3d6
+    Astral Initiative:         8 + 2d6
+    Matrix AR Initiative:      8 + 3d6
+    Matrix Cold Initiative:    4 + DP + 3d6
+    Matrix Hot Initiative:     4 + DP + 4d6
+    Physical Damage Track:     9
+    Stun Damage Track:         10
+</p>
+
+<p>
+    == Limits ==
+    Physical:                  4
+    Mental:                    4
+    Social:                    10
+       Glamour [+2]
+    Astral:                    10
+</p>
+
+<p>
+    == Active Skills ==
+    Alchemy                    : 6 [On command]         Pool: 12 (14)
+    Animal Handling            : 1                      Pool: 11
+    Archery                    : 6 [Bow]                Pool: 12 (14)
+    Armorer                    : 0                      Pool: 1
+    Automatics                 : 0                      Pool: 5
+    Banishing                  : 5                      Pool: 11
+    Blades                     : 0                      Pool: 5
+    Clubs                      : 0                      Pool: 5
+    Computer                   : 0                      Pool: 1
+    Con                        : 2                      Pool: 12
+    Cybercombat                : 0                      Pool: 1
+    Demolitions                : 0                      Pool: 1
+    Disguise                   : 0                      Pool: 3
+    Diving                     : 0                      Pool: 1
+    Escape Artist              : 0                      Pool: 5
+    Etiquette                  : 3                      Pool: 13
+    First Aid                  : 0                      Pool: 1
+    Forgery                    : 0                      Pool: 1
+    Free-Fall                  : 0                      Pool: 1
+    Gunnery                    : 0                      Pool: 5
+    Gymnastics                 : 1 [Dance]              Pool: 9 (11)
+    Hacking                    : 0                      Pool: 1
+    Heavy Weapons              : 0                      Pool: 5
+    Impersonation              : 2                      Pool: 12
+    Instruction                : 0                      Pool: 8
+    Intimidation               : 0                      Pool: 8
+    Leadership                 : 0                      Pool: 8
+    Longarms                   : 0                      Pool: 5
+    Navigation                 : 0                      Pool: 3
+    Negotiation                : 6                      Pool: 16
+    Perception                 : 1                      Pool: 5
+    Performance                : 2                      Pool: 12
+    Pilot Ground Craft         : 0                      Pool: 3
+    Pilot Watercraft           : 0                      Pool: 3
+    Pistols                    : 0                      Pool: 5
+    Running                    : 0                      Pool: 1
+    Sneaking                   : 1                      Pool: 7
+    Summoning                  : 5                      Pool: 11
+    Survival                   : 0                      Pool: 3
+    Swimming                   : 0                      Pool: 1
+    Throwing Weapons           : 0                      Pool: 5
+    Tracking                   : 0                      Pool: 3
+    Unarmed Combat             : 0                      Pool: 5
+</p>
+
+<p>
+    == Knowledge Skills ==
+</p>
+
+<p>
+    == Contacts ==
+    (3, 3)
+</p>
+
+<p>
+    == Qualities ==
+    Exceptional Attribute (CHA)
+    Glamour
+    Gremlins (Rating 4)
+    Low-Light Vision
+    Mentor Spirit (Cat)
+    Mystic Adept
+    Spirit Whisperer
+    Symbiosis
+    Too Pretty To Hit
+    Wanted (De Rochefort)
+</p>
+
+<p>
+    == Spells ==
+    (Tradition: Shamanic, Resist Drain with WIL + CHA (13))
+    Chaos                      DV: F-2
+    Euphoria                   DV: F-3
+    Fashion                    DV: F-1
+    Heal                       DV: F-4
+    Improved Invisibility      DV: F-1
+    Increase [Attribute] (STR) DV: F-3
+    Makeover                   DV: F-3
+    Shapechange                DV: F-3
+    Silence                    DV: F-1
+    Trid Phantasm              DV: F
+</p>
+
+<p>
+    == Powers ==
+    Animal Empathy Rating: 1
+    Astral Perception
+    Improved Reflexes 2
+    Light Body Rating: 1
+    Rapid Draw
+    Wall Running
+</p>
+
+<p>
+    == Armor ==
+    Armor Jacket                        12
+    Clothing                            0
+</p>
+
+<p>
+    == Weapons ==
+    Bow (Rating 4)
+       Pool: 12 (14)   Accuracy: 6   DV: 6P   AP: -1   RC: 2
+    Unarmed Attack
+       Pool: 5   Accuracy: 4   DV: 2S   AP: -   RC: 2
+</p>
+<p>
+    == Martial Arts ==
+    Kyujutsu
+       +Close Quarter Firearms (Archery)
+</p>
+
+<p>
+    == Commlink ==
+    Meta Link (ATT: 0, SLZ: 0, DP: 1, FWL: 1)
+</p>
+<p>
+    == Gear ==
+    Arrow: Standard (Bows) Rating 4 x20
+</p>
+<p>
+    == Notes ==
+    Glamour
+    A character with Glamour is paranaturally gifted so
+    that all sapient beings perceive him as moving with unearthly
+    grace. His countenance always seems radiant,
+    and his voice is soul wrenching and laden with emotion.
+    People may describe him as angelic or fairylike,
+    and everyone he speaks to cannot help but feel moved
+    and inspired. Sapient beings always respond with awe,
+    deference, and kindness to the character as long as he
+    does not act hostile. The character adds 2 to his Social
+    limit and has a +1 dice pool modifier to all Social Skill
+    Tests, with the exception of Intimidation. This quality
+    renders the character particularly memorable, and he
+    suffers from the effects of Distinctive Style quality (p.
+    80, SR5).
+    Symbiosis
+    If the character sets up residence in a certain location
+    for a sustained period of time (more than a season,
+    though the gamemaster determines the specific time
+    period) he gradually becomes attuned to the place
+    and his surroundings. While this grants the character a
+    preternaturally intuitive understanding of the environment
+    and its inhabitants, the bonding can be fatal when
+    it occurs in polluted or desolate urban environments.
+    In game terms, the characterís biorhythm and senses
+    gradually adapt to the environment (Essence x 100
+    meters in radius) around his permanent residenceóthe
+    place where he spends most of his time. The character
+    makes a Body +Willpower (3) Test each month; if they
+    succeed, they are attuned to their environment. If they
+    fail, they are unattuned and left to feel incomplete or
+    lost. It may be that the area in which they live is one
+    where they do not want to be attuned and they want to
+    actively resist the attunement. In that case, they get a
+    ñ1 dice pool modifier on the test.
+    Once the bond is formed, it can only be broken if the
+    character changes his home to form a new bond. They
+    have to live in the new place for a full month to have a
+    chance to break the old bond, and the bond is not broken
+    until they succeed at the Body + Willpower (3) Test
+    in the new neighborhood.
+    Symbiosis provides the character with preternatural
+    insight and connection to everything living within his
+    sphere of attunement. This grants him a +1 dice pool
+    modifier on any Skill Test involving the Outdoor Skill
+    Group as well as a modifier to all Social Tests with individuals
+    residing within the area. In addition, the character
+    possesses an intuitive grasp of whatís going on around
+    him, and he is emotionally affected by the condition of the
+    land. If a fire breaks out, he instantly becomes alarmed. If
+    all inhabitants in the area coexist peacefully, he is blissful
+    and healthy, providing +1 to any Healing Tests performed
+    while in the neighborhood. On the other hand, environmental
+    and social problemsólike drug abuse, gang violence,
+    and pollutionóproduce a somatic response in the
+    character, leaving him sick and depleted; treat as a persistent
+    Mild Allergy until the situation is rectified.
+</p>
+
+            </div>
+
+    </div> <!-- #main -->
+
+    <div id="chat" class="">
+        <dl class="note alert alert-success">
+            <dt>Mia attaque Brute 1 </dt>
+            <dd><span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                4</span> succès,
+                 esquive
+                 <span class="roll critical-fail" data-toggle="tooltip" data-placement="top"
+                       title="4d6 [8] = {<span class='tt-fail'>1</span>, <span class='tt-fail'>1</span>, <span class='tt-fail'>1</span>, 4}">
+                 raté</span> </dd>
+            <dd>Brute 1 subit
+                <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                5</span> dommages </dd>
+        </dl>
+
+
+        <dl class="note alert alert-warning">
+            <dt>Mia fait une préparation </dt>
+            <dd>Force 5 —
+                <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      4</span> succès </dd>
+            <dd>Drain
+                <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                raté</span>
+                <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                2</span> dommages étourdissants</dd>
+        </dl>
+
+        <dl class="note alert alert-warning">
+            <dt>Mia fait une préparation </dt>
+            <dd>Force 5 — <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      4</span> succès </dd>
+            <dd>Drain <span class="roll critical-success" data-toggle="tooltip" data-placement="top"
+                      title="2d6 [8] = {<span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      réussi<span> </dd>
+        </dl>
+
+        <dl class="note alert alert-warning">
+            <dt>Mia fait une préparation </dt>
+            <dd>Force 5 — <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      4</span> succès </dd>
+            <dd>Drain <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      raté</span>
+                      <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      2</span> dommages étourdissants</dd>
+        </dl>
+
+        <dl class="note alert alert-danger">
+            <dt>Brute 2 attaque Bob </dt>
+            <dd><span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      10</span> succès, esquive <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      raté</span> </dd>
+            <dd>Bob subit <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      5</span> dommages physique</dd>
+        </dl>
+
+        <div class="note panel panel-danger">
+            <div class="panel-heading"><h4 class="panel-title">Brute 2 attaque Bob </h4></div>
+            <div class="panel-body"><span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      10</span> succès, esquive <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      raté</span>
+            <br/> Bob subit <span class="roll" data-toggle="tooltip" data-placement="top"
+                      title="8d6 [8] = {<span class='tt-fail'>1</span>, 2, 2, 3, 5, 5, <span class='tt-success'>6</span>, <span class='tt-success'>6</span>}">
+                      5</span> dommages physique</div>
+        </div>
+
+        <!-- FILL -->
+
+
+    </div>
+
+</div> <!-- #layout .entity-panel -->
+
+
+
+<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+	$('.entity').bind("click", function() {
+        var id = $(this).data('targetId');
+        $(".entity-panel").addClass('hidden');
+        $("[data-entity-id='"+id+"']").removeClass('hidden');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip({html: true});
+    $('[data-toggle="popover"]').popover({html: true, container: 'body'});
+
+});
+</script>
+
+</body>
+</html>

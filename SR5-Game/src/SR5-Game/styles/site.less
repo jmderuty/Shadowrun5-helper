@@ -1,15 +1,228 @@
-﻿/*@base: #663333;
+﻿@base: #fff;
 @background: spin(@base, 180);
 @lighter: lighten(spin(@base, 5), 10%);
 @lighter2: lighten(spin(@base, 10), 20%);
 @darker: darken(spin(@base, -5), 10%);
 @darker2: darken(spin(@base, -10), 20%);
 
+@nice-blue:     rgb(37, 42, 58);
+@light-blue:    lighten(@nice-blue, 40%);
+@lighter-blue:  lighten(@nice-blue, 70%);
+
 body {
-        background-color:@background;
+    color: #333;
 }
-.baseColor  {color:@base}
-.bgLight    {color:@lighter}
-.bgLight2   {color:@lighter2}
-.bgDark     {color:@darker}
-.bgDark2    {color:@darker2}*/
+
+a {
+    text-decoration: none;
+    color: #1b98f8;
+}
+
+hidden { display: none; }
+
+/*
+ * -- LAYOUT STYLES --
+ * This layout consists of three main elements, `#nav` (navigation bar), `#list` (email list), and `#main` (email content). All 3 elements are within `#layout`
+ */
+#layout, #nav, #list, #main, #chat {
+    margin: 0;
+    padding: 0;
+}
+#nav, #list, #main, #chat {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    height: 100%;    /* This will take up the entire height */
+}
+#nav {
+    width: 100px;
+}
+#list {
+    left: 100px;
+    width: 250px;
+}
+#main {
+    left: 350px;
+    right: 200px;
+    width: auto; /* so that it's not 100% */
+    padding: 1em;
+}
+#chat {
+    right: 0px;
+    width: 200px;
+    border-left: 2px double #aaa;
+}
+
+/*
+ * -- NAV BAR STYLES --
+ * Styling the default .menu to look a little more unique.
+ */
+#nav {
+    background: @nice-blue;
+    text-align: center;
+
+    h3 {
+        color: #FFF;
+        background-color: ;
+    }
+
+    .menu {
+        background: transparent;
+        border: none;
+        text-align: left;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .menu a:hover,
+    .menu a:focus {
+        background: rgb(55, 60, 90);
+    }
+
+    .menu a {
+        color: #fff;
+        margin-left: 0.5em;
+    }
+    .menu-heading {
+        border-bottom: none;
+        font-size:110%;
+        color: rgb(75, 113, 151);
+    }
+}
+
+
+/*
+ * -- Character --
+ *
+ */
+#list {
+    background: @light-blue;
+}
+
+#list-actions {
+    background: @lighter-blue;
+    border: 0px;
+    border-radius: 0px;
+    min-height: 0px;
+}
+
+.nav-pills > li > a {
+    border-radius: 0px;
+}
+
+.entity {
+    margin: 10px;
+    margin-bottom: 20px;
+    height: 48px;
+    background: @lighter-blue;
+    padding: 0px;
+    box-shadow: -1px 2px 3px 1px rgba(0, 0, 0, 0.7);
+    .avatar {
+        float: left;
+        width: 48px;
+        height: 48px;
+    }
+    .name {
+        display: block;
+        margin: 0;
+        margin-left: 50px;
+    }
+    .status {
+        width: 180px;
+        padding: 0;
+        margin: 0px;
+        margin-left: 50px;
+
+        .stat {
+            display: inline-block;
+            padding: 0 5px;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 14px;
+            color: #ffffff;
+            text-align: center;
+            vertical-align: middle;
+            text-transform: none;
+
+            box-sizing: border-box;
+            min-width: 18px;
+            border-radius: 500px;
+            font-size: 12px;
+            line-height: 18px;
+            width: 40px;
+
+            /* background-image: linear-gradient(to bottom, #ee465a, #c11a39); */
+        }
+    }
+}
+
+
+/*
+ * -- Notification --
+ *
+ */
+.note {
+    margin: 10px;
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+    padding: 5px;
+}
+.note dt {
+    border-bottom: 1px solid #aaa;
+}
+
+/*
+ * -- Roll --
+ *
+ */
+.roll {
+    display: inline-block;
+    cursor:pointer;
+    font-weight: bold;
+    padding: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 1.2em;
+}
+.roll.critical-success {
+    border-color: #3a3;
+}
+.roll.critical-fail {
+    border-color: #a33;
+}
+.tt-fail    {color:#f22;}
+.tt-success {color:#3f3;}
+
+.tooltip {
+    z-index: 100;
+}
+
+
+
+/*
+ * -- Content --
+ *
+ */
+.entity-panel {
+    .attributes {
+        display: inline-block;
+        width: 65%;
+
+        th, td {
+            width: 30px;
+            text-align: center;
+        }
+    }
+
+    .btn-roll {
+        position: relative;
+        top: -14px;
+        left: 10px;
+    }
+
+    .initiative {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
