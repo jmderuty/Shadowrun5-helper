@@ -22,8 +22,9 @@ namespace SR5_Game
         public void Configure(IApplicationBuilder app)
         {
             app.UseIISPlatformHandler();
-            app.UseStaticFiles();
             app.UseDefaultFiles();
+            app.UseStaticFiles();
+           
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
