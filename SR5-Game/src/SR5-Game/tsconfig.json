@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "outFile": "wwwroot/scripts/app.js"
+  },
+  //"exclude": [
+  //  "node_modules",
+  //  "wwwroot",
+  //  "typings"
+  //],
+  "files": [ "scripts/app.ts" ],
+  "compileOnSave": true
+  
+}
