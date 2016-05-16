@@ -23,7 +23,7 @@ namespace SR5_Game
         {
             app.UseIISPlatformHandler();
             app.UseStaticFiles();
-
+            app.UseDefaultFiles();
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
